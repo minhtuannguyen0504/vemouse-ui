@@ -7,23 +7,21 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames/bind";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Logo } from "~/components/Images";
 import config from "~/config";
 import { Search } from "~/layouts/components";
-import Product from "~/pages/Product";
 import styles from "./Header.module.scss";
 
 const cx = classNames.bind(styles);
 
 function Header() {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+/*   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
-  };
+  }; */
 
   return (
     <header className={cx("wrapper")}>
@@ -135,10 +133,10 @@ function Header() {
                   className={cx("navbar__left-item-icon")}
                 />
                 <ul className={cx("navbar__left-list-sub")}>
-                  <Link
+                  <li
                     to={config.routes.product}
                     className={cx("navbar__left-item-sub", "first-item-sub")}
-                    onClick={handleCategoryClick("men's clothing")}
+                    
                   >
                     Thời trang nam
                     <FontAwesomeIcon
@@ -149,12 +147,12 @@ function Header() {
                       <li className={cx("item-detail")}>Hàng mới về</li>
                       <li className={cx("item-detail")}>Hàng giảm giá</li>
                     </ul>
-                  </Link>
+                  </li>
 
-                  <Link
+                  <li
                     to={config.routes.product}
                     className={cx("navbar__left-item-sub", "second-item-sub")}
-                    onClick={handleCategoryClick("women's clothing")}
+                    
                   >
                     Thời trang nữ
                     <FontAwesomeIcon
@@ -166,12 +164,12 @@ function Header() {
                       <li className={cx("item-detail")}>Hàng bán chạy</li>{" "}
                       <li className={cx("item-detail")}>Hàng khuyến mãi</li>
                     </ul>
-                  </Link>
+                  </li>
 
-                  <Link
+                  <li
                     to={config.routes.product}
                     className={cx("navbar__left-item-sub", "third-item-sub")}
-                    onClick={handleCategoryClick("jewelery")}
+                    
                   >
                     Trang sức
                     <FontAwesomeIcon
@@ -182,7 +180,7 @@ function Header() {
                       <li className={cx("item-detail")}>Hàng mới về</li>
                       <li className={cx("item-detail")}>Hàng giảm giá</li>
                     </ul>
-                  </Link>
+                  </li>
 
                   <li className={cx("navbar__left-item-sub", "fifth-item-sub")}>
                     Sản phẩm mới
@@ -208,7 +206,7 @@ function Header() {
                     Sản phẩm khuyến mãi
                   </li>
                 </ul>
-                {<Product category={selectedCategory} />}
+              {/*   {<Product category={selectedCategory} />} */}
               </Link>
               <Link to={config.routes.news} className={cx("navbar__left-item")}>
                 Tin tức

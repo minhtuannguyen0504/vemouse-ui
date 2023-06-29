@@ -1,4 +1,4 @@
-import { memo, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
 
 import * as searchService from '~/services/searchServices'
@@ -7,10 +7,18 @@ import styles from "./Product.module.scss";
 
 const cx = classNames.bind(styles);
 
-function Product({ category }) {
+function Product() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    const fetchApi = async () => {
+      const result = await searchService.search();
+      setData(result);
+    };
+    fetchApi();
+  });
+
+/*   useEffect(() => {
     const fetchApi = async () => {
       const products = await searchService.search(data);
       const productsFilter =  products.filter(product => product.category === category);
@@ -19,7 +27,7 @@ function Product({ category }) {
 
     fetchApi();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [category, data])
+  }, [category, data]) */
   return (
     <div className={cx("wrapper")}>
       <div className={cx("title")}>
@@ -50,4 +58,4 @@ function Product({ category }) {
   );
 }
 
-export default memo(Product);
+export default Product;

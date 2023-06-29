@@ -92,7 +92,7 @@ function Sidebar() {
       <div className={cx("product__dividers")}></div>
 
       <div className={cx("product__list")}>
-        {data.map(
+        {data?.map(
           (item) => item.category === "jewelery" && <ProductItem key={item.id} data={item} />
         )}
       </div>
