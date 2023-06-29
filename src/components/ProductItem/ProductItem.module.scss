@@ -1,0 +1,33 @@
+.link {
+    display: block;
+}
+
+.wrapper {
+    display: flex;
+    margin: 12px 0px;
+    color: var(--black);
+}
+
+.image {
+    height: 60px;
+    min-width: 60px;
+    max-width: 60px;
+}
+
+.info {
+    margin-left: 12px;
+    .name {
+        color: var(--black);
+        &:hover {
+            color: var(--primary);
+        }
+    }
+    .price {
+        display: flex;
+        color: var(--primary);
+    }
+    .symbol {
+        font-size: 0.8rem;
+        top: 0;
+    }
+}

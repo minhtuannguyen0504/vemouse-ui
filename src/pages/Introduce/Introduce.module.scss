@@ -1,0 +1,25 @@
+.wrapper {
+    margin: 100px 0 50px;
+    padding-left: var(--padding-format);
+    padding-right: var(--padding-format);
+    font-family: var(--font-normal);
+}
+
+.title {
+    font-weight: 400;
+    &:hover {
+        color: var(--primary);
+    }
+}
+
+.index {
+    margin: 50px 0;
+}
+
+.slogan {
+    margin-bottom: 50px;
+}
+
+p {
+    line-height: 1.6rem;
+}

@@ -1,0 +1,36 @@
+.wrapper {
+    padding-left: 24px;
+    .img {
+        width: 856px;
+        height: 405px;
+    }
+}
+
+.product__list {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.banner {
+    display: flex;
+    margin-bottom: 20px;
+    .banner__img-right,
+    .banner__img-left {
+        width: 50%;
+    }
+    .banner__img-right {
+        padding-left: 12px;
+    }
+    .banner__img-left {
+        padding-right: 12px;
+    }
+}
+
+.banner-second {
+    margin-top: 20px;
+}
+
+.product__list-free {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}

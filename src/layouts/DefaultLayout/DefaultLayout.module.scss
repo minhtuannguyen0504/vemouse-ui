@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    margin: 100px 0 50px;
+    padding: 0 var(--padding-format);
+}
+
+.content {
+    width: 100%;
+}
