@@ -7,6 +7,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames/bind";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { Logo } from "~/components/Images";
@@ -17,11 +18,11 @@ import styles from "./Header.module.scss";
 const cx = classNames.bind(styles);
 
 function Header() {
-/*   const [selectedCategory, setSelectedCategory] = useState(null);
+  const dispatch = useDispatch();
 
-  const handleCategoryClick = (category) => {
-    setSelectedCategory(category);
-  }; */
+  const handleCategorySelected = (category) => {
+    dispatch({ type: "UPDATE_MY_STATE", payload: category });
+  };
 
   return (
     <header className={cx("wrapper")}>
@@ -123,22 +124,23 @@ function Header() {
               >
                 Giới thiệu
               </Link>
-              <Link
-                to={config.routes.product}
+              <li
                 className={cx("navbar__left-item", "navbar__left-item-product")}
               >
-                Sản phẩm
+                <Link to={config.routes.product}>Sản phẩm</Link>
                 <FontAwesomeIcon
                   icon={faChevronDown}
                   className={cx("navbar__left-item-icon")}
                 />
                 <ul className={cx("navbar__left-list-sub")}>
-                  <li
-                    to={config.routes.product}
-                    className={cx("navbar__left-item-sub", "first-item-sub")}
-                    
-                  >
-                    Thời trang nam
+                  <li className={cx("navbar__left-item-sub", "first-item-sub")}>
+                    <Link
+                      to={config.routes.product}
+                      className={cx("text-dark")}
+                      onClick={() => handleCategorySelected("men's clothing")}
+                    >
+                      Thời trang nam
+                    </Link>
                     <FontAwesomeIcon
                       icon={faAngleRight}
                       className={cx("navbar__left-item-sub-more")}
@@ -150,11 +152,15 @@ function Header() {
                   </li>
 
                   <li
-                    to={config.routes.product}
                     className={cx("navbar__left-item-sub", "second-item-sub")}
-                    
                   >
-                    Thời trang nữ
+                    <Link
+                      to={config.routes.product}
+                      className={cx("text-dark")}
+                      onClick={() => handleCategorySelected("women's clothing")}
+                    >
+                      Thời trang nữ
+                    </Link>
                     <FontAwesomeIcon
                       icon={faAngleRight}
                       className={cx("navbar__left-item-sub-more")}
@@ -166,12 +172,15 @@ function Header() {
                     </ul>
                   </li>
 
-                  <li
-                    to={config.routes.product}
-                    className={cx("navbar__left-item-sub", "third-item-sub")}
-                    
-                  >
-                    Trang sức
+                  <li className={cx("navbar__left-item-sub", "third-item-sub")}>
+                    <Link
+                      to={config.routes.product}
+                      className={cx("text-dark")}
+                      onClick={() => handleCategorySelected("jewelery")}
+                    >
+                      Trang sức
+                    </Link>
+
                     <FontAwesomeIcon
                       icon={faAngleRight}
                       className={cx("navbar__left-item-sub-more")}
@@ -206,8 +215,8 @@ function Header() {
                     Sản phẩm khuyến mãi
                   </li>
                 </ul>
-              {/*   {<Product category={selectedCategory} />} */}
-              </Link>
+              </li>
+
               <Link to={config.routes.news} className={cx("navbar__left-item")}>
                 Tin tức
               </Link>

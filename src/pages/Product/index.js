@@ -1,33 +1,10 @@
-import { useEffect, useState } from "react";
 import classNames from "classnames/bind";
-
-import * as searchService from '~/services/searchServices'
-import ProductCard from "~/components/ProductCard";
+import ProductWrapper from "~/components/ProductWrapper";
 import styles from "./Product.module.scss";
 
 const cx = classNames.bind(styles);
 
 function Product() {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchApi = async () => {
-      const result = await searchService.search();
-      setData(result);
-    };
-    fetchApi();
-  });
-
-/*   useEffect(() => {
-    const fetchApi = async () => {
-      const products = await searchService.search(data);
-      const productsFilter =  products.filter(product => product.category === category);
-      setData(productsFilter);
-    }
-
-    fetchApi();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [category, data]) */
   return (
     <div className={cx("wrapper")}>
       <div className={cx("title")}>
@@ -36,7 +13,7 @@ function Product() {
         </div>
         <div>
           <select name="" id="">
-            <option value="" selected>
+            <option value="">
               Mặc định
             </option>
             <option value="">A- {">"} Z</option>
@@ -49,11 +26,7 @@ function Product() {
         </div>
       </div>
 
-      <div className={cx("product")}>
-        {data?.map((product) => (
-          <ProductCard key={product.id} data={product} />
-        ))}
-      </div>
+      <ProductWrapper />
     </div>
   );
 }

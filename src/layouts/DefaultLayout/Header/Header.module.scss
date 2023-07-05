@@ -183,6 +183,13 @@
     display: block;
 }
 
+.text-dark {
+    color: var(--black) !important;
+    &:hover {
+        color: var(--primary) !important;
+    }
+}
+
 
 /*  */
 
