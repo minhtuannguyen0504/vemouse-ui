@@ -40,6 +40,12 @@
         padding-right: 16px;
         align-items: center;
     }
+    .category__list-item-title {
+        color: #98a7a2;
+        &:hover {
+            color: var(--primary);
+        }
+    }
     .category__list-item-icon {
         right: 0;
     }

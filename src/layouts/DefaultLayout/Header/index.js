@@ -21,7 +21,7 @@ function Header() {
   const dispatch = useDispatch();
 
   const handleCategorySelected = (category) => {
-    dispatch({ type: "UPDATE_MY_STATE", payload: category });
+    dispatch({ type: "UPDATE_CATEGORY_STATE", payload: category });
   };
 
   return (
@@ -127,7 +127,12 @@ function Header() {
               <li
                 className={cx("navbar__left-item", "navbar__left-item-product")}
               >
-                <Link to={config.routes.product}>Sản phẩm</Link>
+                <Link
+                  to={config.routes.product}
+                  onClick={() => handleCategorySelected('all')}
+                >
+                  Sản phẩm
+                </Link>
                 <FontAwesomeIcon
                   icon={faChevronDown}
                   className={cx("navbar__left-item-icon")}

@@ -27,12 +27,13 @@ function Sidebar() {
   ]);
 
   const items = [
-    { title: "Thời trang nam", items: ["Hàng mới về", "Hàng giảm giá"] },
+    { title: "Thời trang nam", items: ["Hàng mới về", "Hàng giảm giá"], subTitle: "men's clothing" },
     {
       title: "Thời trang nữ",
       items: ["Hàng mới về", "Hàng giảm giá", "Hàng khuyến mãi"],
+      subTitle: "women's clothing"
     },
-    { title: "Trang sức", items: ["Hàng mới về", "Hàng giảm giá"] },
+    { title: "Trang sức", items: ["Hàng mới về", "Hàng giảm giá"], subTitle: "jewelery" },
     { title: "Sản phẩm mới", items: ["Hàng mới về", "Hàng giảm giá"] },
   ];
 
@@ -67,6 +68,7 @@ function Sidebar() {
                 key={index}
                 title={item.title}
                 items={item.items}
+                subTitle={item.subTitle}
                 expanded={expandedState[index]}
                 onExpansion={() => handleExpansion(index)}
               />
