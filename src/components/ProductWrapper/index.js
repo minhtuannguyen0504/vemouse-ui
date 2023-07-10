@@ -7,9 +7,22 @@ import * as searchService from "~/services/searchServices";
 
 const cx = classNames.bind(styles);
 
-function ProductWrapper() {
+function ProductWrapper({ filterSelected }) {
   const [data, setData] = useState([]);
   const categoryState = useSelector((state) => state.categoryState);
+
+  // eslint-disable-next-line no-unused-vars
+  const sortDecrease = (prices) => {
+      var temp;
+      for(let i = 0; i < prices.length; i++) {
+          if(prices[i] < prices[i + 1]) {
+              temp = prices[i];
+              prices[i+1] = prices[i];
+              prices[i] = temp;
+          }
+      }
+      return prices;
+  }
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -19,20 +32,35 @@ function ProductWrapper() {
       );
       setData(productsFilter.length > 0 ? productsFilter : products);
     };
-
     fetchApi();
-    console.log(data);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [categoryState]);
 
+  useEffect(() => {
+    // eslint-disable-next-line default-case
+    switch (filterSelected) {
+      case "decrease":
+        const listPrices = data.map(
+          (product) => product.price > 0 && product.price
+        );
+        let afterSortPrices = sortDecrease(listPrices);
+        console.log(sortDecrease(listPrices));
+        const productsFilter = data.filter(
+          (product, index) => product.price === afterSortPrices[index]
+        );
+      setData(productsFilter.length > 0 ? productsFilter : data);
+
+        break;
+      default:
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filterSelected]);
+
   return (
     <div className={cx("product")}>
-      {data?.map(
-        (product) =>
-          product.category !== "electronics" && (
-            <ProductCard key={product.id} data={product} />
-          )
-      )}
+      {data?.map((product) => (
+        product.category !== 'electronics' && <ProductCard key={product.id} data={product} />
+      ))}
     </div>
   );
 }
